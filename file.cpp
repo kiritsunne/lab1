@@ -189,17 +189,17 @@ bool CreateNewFile(string &filePath) {
 		return false;
 	}
 
-	bool flag = false;
+	bool correctFileFlag = false;
 	ofstream file(filePath);
 
 	if (file.is_open()) {
 		if (!fs::is_regular_file(fs::status(filePath))) {
 			cout << "Не регулярный файл. Запись и чтение невозможны" << endl;
-			flag = false;
+			correctFileFlag = false;
 		}
 		else {
 			cout << "Файл создан и готов к записи" << endl;
-			flag = true;
+			correctFileFlag = true;
 		}
 	}
 
@@ -207,11 +207,11 @@ bool CreateNewFile(string &filePath) {
 		cout << "Файл не создан" << endl;
 		cout << "Неккоректно введен путь к файлу" << endl
 			<< "Проверьте вводимый путь и расширение файла" << endl;
-		flag = false;
+		correctFileFlag = false;
 	}
 
 	file.close();
-	return flag;
+	return correctFileFlag;
 }
 //ввод пути к файлу и его проверка
 string EnterFilePath()
